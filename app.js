@@ -2,13 +2,15 @@ require('dotenv').config();
  const express = require('express');
  const app = express();
  const mongoose = require('mongoose');
+
+ app.use(cors());
  
+ app.use(express.json());
+
 const PORT = process.env.PORT || 3000;
 const mongoURL = process.env.MONGO_URL;
 
 mongoose.connect(mongoURL).then(() => console.log('MongoDB Connected Successfully!')).catch((err) => console.error('MongoDB Connection Error!', err));
-
-app.use(express.json());
 
 const bookRoutes = require('./routes/bookRoutes');
 app.use('/books', bookRoutes);

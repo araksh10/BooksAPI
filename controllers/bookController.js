@@ -32,7 +32,7 @@ exports.updateBook = async (req, res) => {
 
         if(!updatedBook) return res.status(404).json({ error: 'Book not found' });
 
-        res.status(201).json({ message: 'Book updated successfully!', book:updatedBook });
+        res.status(200).json({ message: 'Book updated successfully!', book:updatedBook });
     } catch (err) {
         res.status(400).json({ error: err.message})
     }
